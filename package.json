@@ -1,0 +1,141 @@
+{
+    "name": "background",
+    "displayName": "background",
+    "description": "A simple tool to make your vscode's background look better!",
+    "version": "0.0.1",
+    "publisher": "hrdtbs",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hrdtbs/vscode-background.git"
+    },
+    "engines": {
+        "vscode": "^1.17.0"
+    },
+    "icon": "logo.png",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.background.info",
+                "title": "Background - Info"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Plugin background config. background 插件配置",
+            "properties": {
+                "background.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Plugin background enabled.background"
+                },
+                "background.useFront": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If use front image,which means image is placed on the top of your code."
+                },
+                "background.style": {
+                    "type": "object",
+                    "default": {
+                        "content": "''",
+                        "pointer-events": "none",
+                        "position": "absolute",
+                        "z-index": "99999",
+                        "width": "100%",
+                        "height": "100%",
+                        "background-position": "100% 100%",
+                        "background-repeat": "no-repeat",
+                        "opacity": 1
+                    },
+                    "description": "Custom common style."
+                },
+                "background.styles": {
+                    "type": "array",
+                    "default": [
+                        {},
+                        {},
+                        {}
+                    ],
+                    "description": "Each style of backgrounds."
+                },
+                "background.customImages": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Your custom Images(Max length is 3). "
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./ ",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test",
+        "update": "yarn upgrade-interactive --latest",
+        "lint:ts": "eslint ./src/*.ts --cache",
+        "lint:json": "prettier '*.json'",
+        "lint:text": "textlint './*.md'",
+        "lint:fix:ts": "yarn lint:ts --fix",
+        "lint:fix:json": "yarn lint:json --write",
+        "lint:fix:text": "yarn lint:text --fix",
+        "lint": "run-p -l -n -c --aggregate-output lint:*",
+        "lint:fix": "run-p -l -n -c --aggregate-output lint:fix:*",
+        "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+        "release": "yarn build && yarn version && npm publish && git push && git push --tags"
+    },
+    "devDependencies": {
+        "@commitlint/config-conventional": "^8.0.0",
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.43",
+        "@typescript-eslint/eslint-plugin": "^1.11.0",
+        "@typescript-eslint/parser": "^1.11.0",
+        "commitlint": "^8.0.0",
+        "conventional-changelog-cli": "^2.0.21",
+        "eslint": "^6.0.1",
+        "eslint-config-prettier": "^5.1.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-sort-imports-es6-autofix": "^0.4.0",
+        "husky": "^2.7.0",
+        "lint-staged": "^8.2.1",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^1.18.2",
+        "textlint": "^11.2.5",
+        "textlint-rule-common-misspellings": "^1.0.1",
+        "textlint-rule-preset-ja-technical-writing": "^3.1.2",
+        "textlint-rule-preset-jtf-style": "^2.3.3",
+        "textlint-rule-prh": "^5.2.1",
+        "textlint-rule-spellcheck-tech-word": "^5.0.0",
+        "typescript": "^3.5.2",
+        "vscode": "^1.1.5"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "linters": {
+            "*.{ts,tsx}": [
+                "yarn lint:fix:ts",
+                "git add"
+            ],
+            "*.{json}": [
+                "yarn lint:fix:json",
+                "git add"
+            ],
+            "*.{md}": [
+                "yarn lint:fix:text",
+                "git add"
+            ]
+        }
+    }
+}
