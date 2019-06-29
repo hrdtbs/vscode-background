@@ -114,7 +114,7 @@
         "textlint-rule-prh": "^5.2.1",
         "textlint-rule-spellcheck-tech-word": "^5.0.0",
         "typescript": "^3.5.2",
-        "vscode": "^1.1.5"
+        "vscode": "^1.1.35"
     },
     "husky": {
         "hooks": {
