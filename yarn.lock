@@ -5142,7 +5142,7 @@ vscode-test@^0.4.1:
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.1"
 
-vscode@^1.1.5:
+vscode@^1.1.35:
   version "1.1.35"
   resolved "https://registry.yarnpkg.com/vscode/-/vscode-1.1.35.tgz#f8c6beb905738b874d539ddb3784e5feeec71c0a"
   integrity sha512-xPnxzQU40LOS2yPyzWW+WKpTV6qA3z16TcgpZ9O38UWLA157Zz4GxUx5H7Gd07pxzw0GqvusbF4D+5GBgNxvEQ==
