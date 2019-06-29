@@ -29,7 +29,7 @@
         ],
         "configuration": {
             "type": "object",
-            "title": "Plugin background config. background 插件配置",
+            "title": "Plugin background config.",
             "properties": {
                 "background.enabled": {
                     "type": "boolean",
