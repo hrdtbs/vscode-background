@@ -94,7 +94,7 @@
     "devDependencies": {
         "@commitlint/config-conventional": "^8.0.0",
         "@types/mocha": "^5.2.7",
-        "@types/node": "^7.0.43",
+        "@types/node": "^7.10.6",
         "@typescript-eslint/eslint-plugin": "^1.11.0",
         "@typescript-eslint/parser": "^1.11.0",
         "commitlint": "^8.0.0",
